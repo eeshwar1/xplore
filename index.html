@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>xplore</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Easwar">
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />  
+  <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+	<!-- Date: 2011-08-28 -->
+	<script type="text/javascript">
+      $(function(){
+
+ 
+  
+        // Tabs
+  
+    $( "#tabs" ).tabs({
+      event: "mouseover"
+    });
+    
+    // Progressbar
+        $("#progressbar").progressbar({
+          value: 20 
+        });
+  });
+  </script>
+
+</head>
+<body>
+<div id="topmast"><img src="images/xploremast.png" alt="xplore"></div>
+<table width="20%">
+  <tr>
+    <td>
+       <textarea id="searchText"></textarea>
+    </td>
+    <td>
+      <input type="submit" action="searchData.php" value="xplore">
+    </td>  
+  </tr>
+</table>
+<div id="progressbar"></div>
+<div>
+  Search Results  
+</div>
+<div id="tabs">
+
+      <ul>
+        <li><a href="#tabs-1">First</a></li>
+        <li><a href="#tabs-2">Second</a></li>
+        <li><a href="#tabs-3">Third</a></li>
+      </ul>
+      <div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+      <div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+
+      <div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+    </div>
+</body>
+</html>
