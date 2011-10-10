@@ -1,63 +1,110 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
-<html lang="en">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>xplore</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="Easwar">
-	<link rel="stylesheet" type="text/css" href="css/default.css">
-	<link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />  
+	<title>x p l o r e</title>
+  <link rel="stylesheet" type="text/css" href="css/default.css">
   <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="js/functions.js"></script>
 	<!-- Date: 2011-08-28 -->
 	<script type="text/javascript">
-      $(function(){
-
- 
-  
-        // Tabs
-  
-    $( "#tabs" ).tabs({
-      event: "mouseover"
+	$(function() {
+	  var instant = "off";
+      
+        
+    //ajax
+    
+    	/**
+		* the element
+		*/
+		var $ui = $('#ui_element');
+		var $sel_shown = false;
+				
+		/**
+		* on focus and on click display the dropdown, 
+		* and change the arrow image
+		*/
+		$ui.find('.sb_sel_down').bind('focus click',function()
+		{
+			if ($sel_shown == false)
+			{
+				$ui.find('.sb_sel_down')
+					.addClass('sb_sel_up')
+					.removeClass('sb_sel_down')
+					.andSelf()
+					.find('.sb_dropdown')
+					.show('blind');
+					$sel_shown = true;
+			}
+			else
+			{	
+					$ui.find('.sb_sel_up')
+					.addClass('sb_sel_down')
+					.removeClass('sb_sel_up')
+					.andSelf()
+					.find('.sb_dropdown')
+					.hide('blind');
+					$sel_shown = false;
+			}
+		});
+		
+      $("#instant").click(function()
+      {
+      	if(instant == "off")
+      	{
+      		instant = "on";
+      	}
+      	else
+      	{
+      		instant = "off";
+      	}
+      });
+      
+      $("#searchText").keyup(function(){
+      
+      if(instant == "on")
+      {
+      
+     		 $("#searchResults").load("searchData.php?searchText="+$(this).val());
+      }
     });
     
-    // Progressbar
-        $("#progressbar").progressbar({
-          value: 20 
-        });
+      $("#xplore").click(function(){
+      $("#searchResults").load("searchData.php?searchText="+$("#searchText").val());
+    });
   });
+  
   </script>
-
+  
 </head>
 <body>
-<div id="topmast"><img src="images/xploremast.png" alt="xplore"></div>
-<table width="20%">
-  <tr>
-    <td>
-       <textarea id="searchText"></textarea>
-    </td>
-    <td>
-      <input type="submit" action="searchData.php" value="xplore">
-    </td>  
-  </tr>
-</table>
-<div id="progressbar"></div>
-<div>
-  Search Results  
+<label class="topmast select" id="topmast_uat">UAT</label>
+<label class="topmast deselect" id="topmast_prod">PROD</label>
+<div class="checker">
+<input type="checkbox" name="instant" value="on" id="instant"><label>Instant</label></input>
 </div>
-<div id="tabs">
-
-      <ul>
-        <li><a href="#tabs-1">First</a></li>
-        <li><a href="#tabs-2">Second</a></li>
-        <li><a href="#tabs-3">Third</a></li>
-      </ul>
-      <div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-      <div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
-
-      <div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
-    </div>
+<div id="ui_element" class="sb_wrapper">
+<p>
+<span class="sb_sel_down"></span>
+<input type="text" id="searchText" class="sb_input"></input>
+<input type="submit" value="xplore" id="xplore"></input>
+</p>
+<ul class="sb_dropdown" style="display:none;">
+	<li class="sb_filter">Filter your search</li>
+	<li><input type="checkbox"/><label for="All"><strong>All Categories</strong></label></li>
+	<li><input type="checkbox"/><label for="JCL">JCL</label></li>
+	<li><input type="checkbox"/><label for="PROC">PROC</label></li>
+	<li><input type="checkbox"/><label for="Card">Card</label></li>
+	<li><input type="checkbox"/><label for="Source">Source</label></li>
+</ul>
+</div>
+<div class="sidebar">
+<label class="sidebar_item select">JCL</label>
+<label class="sidebar_item">PROC</label>
+<label class="sidebar_item">CARD</label>
+<label class="sidebar_item">SRC</label>
+<label class="sidebar_item">COPY</label>
+</div>
+<div class="codearea" id="searchResults">
+</div>
 </body>
 </html>
