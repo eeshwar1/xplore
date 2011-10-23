@@ -22,6 +22,7 @@ if(isset($_GET['searchText']) && $_GET['searchText'] != ''){
 
         $i = 1;
         
+        $alldocs = array();
         foreach ($docs as $doc)
         {
             $strings = $doc->getElementsByTagName('str');
@@ -43,12 +44,17 @@ if(isset($_GET['searchText']) && $_GET['searchText'] != ''){
                 }
             }
         
-            echo '<pre>' .$doctext. ' .</pre>';
-            
+          $docdata = array(
+            			"doc_name" => $docname,
+            			"doc_type" => $doctype,
+            			"doc_text" => $doctext);
           
+        
+        $alldocs[] = $docdata;
+        
             $i++;
         }
-       
+       echo json_encode($alldocs,JSON_FORCE_OBJECT);
     }
    else
    {

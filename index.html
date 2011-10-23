@@ -64,14 +64,20 @@
       if(instant == "on")
       {
       
-     		 $("#searchResults").load("searchData.php?searchText="+$(this).val());
+     		// $("#searchResults").load("searchData.php?searchText="+$(this).val());
+     		//$("#searchResults").append(jQuery.get("searchData.php?searchText="+$("#searchText").val()));
+     		render_data();
       }
     });
     
-      $("#xplore").click(function(){
+     /* $("#xplore").click(function(){
       $("#searchResults").load("searchData.php?searchText="+$("#searchText").val());
-    });
-  });
+    }); */
+    
+    $("#xplore").click(function() {render_data(); });
+    
+    						
+	});
   
   </script>
   

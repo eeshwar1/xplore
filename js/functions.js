@@ -62,3 +62,53 @@ $("#searchTB").onkeypress(function(){
 	$("#searchResults").load("sQuerySongs.php?A");  
 	});  
 });  */
+
+
+function render_json(results,decode)
+{
+	var str="";
+	alert(results);
+	if(decode == 1)
+	{
+		$.each(results,function(i,doc)
+			{
+				str = str + doc.doc_name + " " +
+					        doc.doc_type + " " +
+				    	    doc.doc_text;
+			});
+	}
+	else
+	{
+		str = results;
+	}
+	document.getElementById("searchResults").innerHTML = str;
+}
+
+function render_data()
+{
+     $.getJSON("searchData.php?searchText="+$("#searchText").val(),
+            		function(json) {		
+            						var str = "";
+                                    $.each(json,function(key,doc){ 
+                                    		 str = str +  '<div class="resultItem">' + "<b>" +  doc.doc_name + "</b>" +
+                                    		              "<pre>" +  hiliteKeywords(doc.doc_text) + "</pre>" +
+                                    		              "</div><BR>";
+                                    		              });
+									document.getElementById("searchResults").innerHTML = str;		
+									$("#searchResults").css('display','block');
+								});
+}
+
+function hiliteKeywords(str)
+{
+
+	var keywords = new Array("JOB ","EXEC "," PROC ","DISP","NEW","CATLG","DELETE","DD","DSN","PGM","SHR","MOD","MSGCLASS","CLASS",
+	                         "NOTIFY","LRECL","BLKSIZE","DSORG");
+
+	for(i=0;i<keywords.length;i++)
+	{
+		var regex = new RegExp(keywords[i],"gi");
+		str = str.replace(regex,'<span id="keyword">' + keywords[i] + '</span>');
+	}
+	return str;
+}
