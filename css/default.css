@@ -1,20 +1,29 @@
 .topmast
 {
-    font-family: Times New Roman;
-    font-size: 30px;
-    text-align: center;
-    width: 50px;
-    border-color: #CCCCCC;
+    background: #434343;
+    position: fixed;
+    height: 110px;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    border-color: #565656;
     border-style: solid;
-    position: absolute;
-    border-width: 1px
-   
-  
+    border-width: 2px;
+ 
+}
+.logo
+{
+	padding: 10px 10px 10px 10px;
+	
 }
 #topmast_uat
 {
 	left: 200px;
     top: 10px;
+    width: 60px;
+    height: 25px;
+    position: absolute;
+    text-align: center;
     -moz-border-radius:5px 5px 5px 5px;
 	-webkit-border-top-right-radius:5px;
 	-webkit-border-top-left-radius:5px;
@@ -29,8 +38,12 @@
 
 #topmast_prod
 {
-	left: 280px;
+	left: 290px;
     top: 10px;
+    width: 60px;
+    height: 25px;
+    position: absolute;
+    text-align: center;
     -moz-border-radius:5px 5px 5px 5px;
 	-webkit-border-top-right-radius:5px;
 	-webkit-border-top-left-radius:5px;
@@ -43,6 +56,17 @@
     
 }
 
+.checker
+{	
+	font-family: verdana;
+	font-size: 15px;
+	color: #CFCFCF;
+	padding: 5px 10px 5px 10px;
+	left: 380px;
+	top: 15px;
+	width: 100px;
+	position: absolute;
+}
 
 #keyword
 {
@@ -69,17 +93,18 @@
 	
 input[type="submit"]
 		{
-			background-color: #00BFFF;
+			background-color: #3399EE;
 			width: 100px;
 			height: 40px;
 			font-family: verdana;
 			font-size: 20px;
 			color: #FFFFFF;
 			text-align: center;
-			position: absolute;
 			top: 20px;
 			left: 510px;
 			height: 40px;
+            position: absolute;
+            border-color: #848484;
 		}
 		input[type="submit"]:hover
 		{
@@ -103,12 +128,13 @@ input[type="submit"]
 		}
 		.sidebar
 		{
-			position: absolute;
+			position: fixed;
 			left: 5px;
 			top: 120px;
 		}
 		.sidebar_item
 		{
+			position: absolute;
 			display: block;
 			list-style: none;
 			font-family: verdana;
@@ -143,20 +169,33 @@ input[type="submit"]
 		}
 		.topmast.select
 		{
-		/*	background: #9ACD32;*/
-		    background: #00BFFF;
+		  /*  background: #00BFFF; */
+		    background: #3399EE;
 			font-family: verdana;
-			font-size: 20px;
+			font-size: 22px;
+			font-style: bold;
 			padding: 5px 10px 5px 10px;
-			color: #F0F0F0;
+			color: #FFFFFF;
 		}
+		.topmast.select:hover
+		{
+			border-color: #00BBFF;
+			border-width: 3px;
+		}
+		
 		.topmast.deselect
 		{
 			background: #A9A9A9;
 			font-family: verdana;
-			font-size: 20px;
+			font-size: 22px;
+			font-style: bold;
 			padding: 5px 10px 5px 10px;
-			color: #F0F0F0;
+			color: #FFFFFF;
+		}
+		.topmast.deselect:hover
+		{
+			border-color: #F6F6F6;
+			border-width: 3px;
 		}
 		.codearea
 		{
@@ -164,25 +203,13 @@ input[type="submit"]
 			left: 140px;
 			top: 120px;
 			width: 900px;
-		/*	border-width: 2px;
-			border-color: #A9A9A9;
-			border-style: solid; */
 			display: none;
-			/*overflow: scroll;*/
 			font-family: courier new;
 			font-size: 18px;
 			z-index: -1;
 		}
 		
-		.checker
-		{	
-			font-family: verdana;
-			font-size: 15px;
-			padding: 5px 10px 5px 10px;
-			position: absolute;
-			left: 350px;
-			top: 10px;
-		}
+
 
 .sb_wrapper{
 	margin:0;
@@ -240,7 +267,6 @@ ul.sb_dropdown li.sb_filter{
 	clear:both;
 	background: #ddd;
 	font-size:12px;
-	/*text-transform:uppercase;*/
 	letter-spacing:1px;
 	color:#444;
 	height:16px;

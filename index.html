@@ -9,6 +9,7 @@
 	<script type="text/javascript">
 	$(function() {
 	  var instant = "off";
+	  var region = "prod";
       
         
     //ajax
@@ -64,18 +65,33 @@
       if(instant == "on")
       {
       
-     		// $("#searchResults").load("searchData.php?searchText="+$(this).val());
-     		//$("#searchResults").append(jQuery.get("searchData.php?searchText="+$("#searchText").val()));
      		render_data();
       }
     });
     
-     /* $("#xplore").click(function(){
-      $("#searchResults").load("searchData.php?searchText="+$("#searchText").val());
-    }); */
     
     $("#xplore").click(function() {render_data(); });
     
+    $("#topmast_uat").click(function() {
+    
+    										region = "uat";
+    										$("#topmast_uat").removeClass("deselect");
+    										$("#topmast_uat").addClass("select");
+    										$("#topmast_prod").removeClass("select");
+    										$("#topmast_prod").addClass("deselect");
+    									});
+    									
+	$("#topmast_prod").click(function() {
+    
+    										region = "prod";
+    										$("#topmast_prod").removeClass("deselect");
+    									    $("#topmast_prod").addClass("select");
+    										$("#topmast_uat").removeClass("select");
+    										$("#topmast_uat").addClass("deselect");
+    									});
+    													
+    								
+    			
     						
 	});
   
@@ -83,10 +99,14 @@
   
 </head>
 <body>
+<div class="topmast">
+<img src="images/xplore_temp.png" class="logo">
 <label class="topmast select" id="topmast_uat">UAT</label>
 <label class="topmast deselect" id="topmast_prod">PROD</label>
 <div class="checker">
-<input type="checkbox" name="instant" value="on" id="instant"><label>Instant</label></input>
+<input type="checkbox" name="instant" value="on" id="instant">
+<label>Instant</label>
+</input>
 </div>
 <div id="ui_element" class="sb_wrapper">
 <p>
@@ -103,12 +123,14 @@
 	<li><input type="checkbox"/><label for="Source">Source</label></li>
 </ul>
 </div>
+</div>
 <div class="sidebar">
 <label class="sidebar_item select">JCL</label>
+<!--
 <label class="sidebar_item">PROC</label>
 <label class="sidebar_item">CARD</label>
 <label class="sidebar_item">SRC</label>
-<label class="sidebar_item">COPY</label>
+<label class="sidebar_item">COPY</label> -->
 </div>
 <div class="codearea" id="searchResults">
 </div>
