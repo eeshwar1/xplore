@@ -89,13 +89,74 @@ function render_data()
      $.getJSON("searchData.php?searchText="+$("#searchText").val(),
             		function(json) {		
             						var str = "";
+            						var disp_jcl = false;
+            						var disp_crd = false;
+            						var disp_prc = false;
+            						var disp_src = false;
                                     $.each(json,function(key,doc){ 
                                     		 str = str +  '<div class="resultItem">' + "<b>" +  doc.doc_name + "</b>" +
                                     		              "<pre>" +  hiliteKeywords(doc.doc_text) + "</pre>" +
                                     		              "</div><BR>";
+                                    		              
+                                    		              
+                                    		              if (disp_jcl == false && doc.doc_type == "JCL")
+                                    		              {
+                                    		              		disp_jcl = true;
+                                    		              }
+                                    		              if (disp_crd == false && doc.doc_type == "CARD")
+                                    		              {
+                                    		              		disp_crd = true;
+                                    		              }
+                                    		              if (disp_crd == false && doc.doc_type == "PROC")   
+                                    		              {
+                                    		              		disp_crd = true;
+                                    		              }
+                                    		              if (disp_src == false && doc.doc_type == "PROC")   
+                                    		              {
+                                    		              		disp_src = true;
+                                    		              }
                                     		              });
+                                    		              
+                                    if(str == "")
+                                    {
+                                    	str = '<div class="resultItem">' + "No results to display" + '</div>';
+                                	}
 									document.getElementById("searchResults").innerHTML = str;		
 									$("#searchResults").css('display','block');
+									
+									if(disp_jcl == true)
+									{
+										$("#sidebar_jcl").css('display','block');
+									}
+									else
+									{
+										$("#sidebar_jcl").css('display','none');
+									}
+									if(disp_prc == true)
+									{
+										$("#sidebar_prc").css('display','block');
+									}
+									else
+									{
+										$("#sidebar_prc").css('display','none');
+									}
+									if(disp_crd == true)
+									{
+										$("#sidebar_crd").css('display','block');
+									}
+									else
+									{
+										$("#sidebar_crd").css('display','none');
+									}
+									if(disp_src == true)
+									{
+										$("#sidebar_src").css('display','block');
+									}
+									else
+									{
+										$("#sidebar_src").css('display','none');
+									}
+									
 								});
 }
 

@@ -112,7 +112,7 @@
 <p>
 <span class="sb_sel_down"></span>
 <input type="text" id="searchText" class="sb_input"></input>
-<input type="submit" value="xplore" id="xplore"></input>
+<input type="submit" value="" id="xplore"></input>
 </p>
 <ul class="sb_dropdown" style="display:none;">
 	<li class="sb_filter">Filter your search</li>
@@ -125,12 +125,11 @@
 </div>
 </div>
 <div class="sidebar">
-<label class="sidebar_item select">JCL</label>
-<!--
-<label class="sidebar_item">PROC</label>
-<label class="sidebar_item">CARD</label>
-<label class="sidebar_item">SRC</label>
-<label class="sidebar_item">COPY</label> -->
+<label class="sidebar_item" id="sidebar_jcl" style="display:none;">JCL</label>
+<label class="sidebar_item" id="sidebar_prc" style="display:none;">PROC</label>
+<label class="sidebar_item" id="sidebar_crd" style="display:none;" >CARD</label>
+<label class="sidebar_item" id="sidebar_src" style="display:none;">SRC</label>
+<label class="sidebar_item" id="sidebar_cpy" style="display:none;">COPY</label>
 </div>
 <div class="codearea" id="searchResults">
 </div>
